@@ -1,127 +1,133 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Desain</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio | Semm4ze</title>
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-body{
-  background:#0d0d0d;
-  color:#f5f5f5;
-}
+    body {
+      margin: 0;
+      background: #0f0f0f;
+      color: #fff;
+    }
 
-header{
-  padding:40px 20px;
-  text-align:center;
-}
+    header {
+      text-align: center;
+      padding: 60px 20px;
+    }
 
-header h1{
-  font-size:2.2rem;
-  margin-bottom:6px;
-}
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
 
-header span{
-  color:#888;
-  font-size:0.9rem;
-}
+    header p {
+      color: #aaa;
+      max-width: 500px;
+      margin: auto;
+    }
 
-main{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
-}
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap:20px;
-}
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
 
-.card{
-  background:#181818;
-  border-radius:16px;
-  overflow:hidden;
-  transition:0.3s;
-}
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
 
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
+    .card img {
+      width: 100%;
+      display: block;
+    }
 
-.card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-}
+    .card-content {
+      padding: 15px;
+    }
 
-.card h3{
-  padding:12px 16px 2px;
-  font-size:1.05rem;
-}
+    .card h3 {
+      margin: 0;
+      font-size: 18px;
+    }
 
-.card p{
-  padding:0 16px 14px;
-  font-size:0.85rem;
-  color:#aaa;
-}
+    .card p {
+      margin: 5px 0 0;
+      color: #bbb;
+      font-size: 14px;
+    }
 
-footer{
-  text-align:center;
-  padding:30px;
-  font-size:0.8rem;
-  color:#666;
-}
-</style>
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+      font-size: 13px;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Portfolio Desain</h1>
-  <span>Selected Works</span>
+  <h1>My Design Portfolio</h1>
+  <p>Koleksi hasil desain dan project visual yang pernah saya kerjakan.</p>
 </header>
 
-<main>
-  <section class="grid">
+<section class="projects">
 
-    <div class="card">
-      <img src="img/project1.jpg" alt="Project 1">
-      <h3>Logo</h3>
-      <p>Komunitas</p>
+  <div class="card">
+    <img src="img/project1.jpg" alt="Landing Page">
+    <div class="card-content">
+      <h3>LOGO</h3>
+      <p>KOMUNITAS</p>
     </div>
+  </div>
 
-    <div class="card">
-      <img src="img/project2.jpg" alt="Project 2">
-      <h3>Logo</h3>
-      <p>Komunitas</p>
+  <div class="card">
+    <img src="img/project2.jpg" alt="Instagram Feed">
+    <div class="card-content">
+      <h3>LOGO</h3>
+      <p>KOMUNITAS</p>
     </div>
+  </div>
 
-    <div class="card">
-      <img src="img/project3.jpg" alt="Project 3">
-      <h3>Logo</h3>
-      <p>Komunitas</p>
+  <div class="card">
+    <img src="img/project3.jpg" alt="Mobile UI">
+    <div class="card-content">
+      <h3>LOGO</h3>
+      <p>KOMUNITAS</p>
     </div>
+  </div>
 
-    <div class="card">
-      <img src="img/project4.jpg" alt="Project 4">
+  <div class="card">
+    <img src="img/project4.jpg" alt="Poster Digital">
+    <div class="card-content">
       <h3>Poster Digital</h3>
-      <p>Makanan</p>
+      <p>Visual Design</p>
     </div>
+  </div>
 
-  </section>
-</main>
+</section>
 
 <footer>
-  © 2024 Portfolio semm4zee — z`4sTEAM 
+  © 2024 semm4ze • Portfolio Design — z`4sTEAM
 </footer>
 
 </body>
