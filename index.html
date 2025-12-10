@@ -345,6 +345,74 @@ header h1::after {
   margin: 18px auto;
   border-radius: 999px;
 }
+/* === HERO DEWA FINAL === */
+.hero {
+  position: relative;
+  padding: 120px 20px 90px;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, rgba(0,255,200,.15), transparent 40%),
+    linear-gradient(180deg, #050505, #0b0b0b);
+  overflow: hidden;
+}
+
+/* grain overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* logo pojok kanan */
+.corner-logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 10px rgba(0,255,200,.3));
+}
+
+/* judul */
+.hero-title {
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin: 0;
+  color: #eafff8;
+  text-shadow: 0 0 30px rgba(0,255,200,.25);
+}
+
+/* graffiti/impact feel */
+.hero-title span {
+  display: inline-block;
+  background: linear-gradient(90deg, #00ffd5, #4da6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+/* garis accent */
+.hero .line {
+  width: 80px;
+  height: 4px;
+  margin: 22px auto;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00ffd5, #4da6ff);
+}
+
+/* deskripsi */
+.hero p {
+  max-width: 420px;
+  margin: 0 auto;
+  font-size: 15px;
+  color: #b5c0c7;
+  line-height: 1.6;
+  }
     
   </style>
 </head>
