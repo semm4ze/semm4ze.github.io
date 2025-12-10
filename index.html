@@ -442,6 +442,31 @@ header h1::after {
 header p {
   letter-spacing: .4px;
 }
+.card {
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.01);
+}
+.card:hover img {
+  filter: saturate(1.15) contrast(1.1);
+}
+@media (max-width: 600px) {
+  .card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+ footer {
+  opacity: 0.75;
+  letter-spacing: .6px;
+ }
+ @media (min-width: 1200px) {
+  .projects {
+    gap: 34px;
+  }
+   }
     
   </style>
 </head>
