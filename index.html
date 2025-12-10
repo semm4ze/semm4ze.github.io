@@ -556,7 +556,26 @@ header::before {
   letter-spacing: 0.4px;
   opacity: 0.7;
     }
-    
+  .lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+.lightbox.show {
+  display: flex;
+  }
+         
   </style>
 </head>
 
@@ -646,6 +665,7 @@ header::before {
 </section>
 
 <script>
+<script>
 /* === CEO CURSOR LIGHT EFFECT (SUBTLE) === */
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('mousemove', e => {
@@ -654,11 +674,32 @@ document.querySelectorAll('.card').forEach(card => {
     card.style.setProperty('--y', e.clientY - rect.top + 'px');
   });
 });
+
+/* === LIGHTBOX IMAGE === */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".card img").forEach(img => {
+  img.addEventListener("click", e => {
+    e.stopPropagation();
+    lightboxImg.src = img.src;
+    lightbox.classList.add("show");
+  });
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("show");
+});
+</script>
+  
 </script>
 <footer class="site-footer">
   <p>© 2024 z`4sTEAM</p>
   <span>Graphic Design • Pixel Art • Streaming Visual</span>
 </footer>
+ <div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+ </div>
   
 </body>
 </html>
