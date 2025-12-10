@@ -413,6 +413,35 @@ header h1::after {
   color: #b5c0c7;
   line-height: 1.6;
   }
+ .card {
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.card:hover {
+  box-shadow:
+    0 20px 45px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(255,255,255,0.08);
+    }
+ .card h3 {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.card p {
+  font-size: 13px;
+  letter-spacing: .3px;
+  }
+ .card img {
+  filter: saturate(1.08) contrast(1.08);
+ }
+ header {
+  padding-bottom: 90px;
+}
+
+header p {
+  letter-spacing: .4px;
+}
     
   </style>
 </head>
