@@ -281,14 +281,81 @@ header h1::after {
     rgba(255,255,255,0.02)
   );
   }
-                
+ /* === HERO BACKGROUND === */
+.hero {
+  position: relative;
+  padding: 120px 20px 80px;
+  background:
+    radial-gradient(circle at top, rgba(0,255,200,.12), transparent 40%),
+    linear-gradient(180deg, #050505, #0b0b0b);
+  overflow: hidden;
+}
+
+/* overlay noise */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* === LOGO KANAN ATAS === */
+.corner-logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  opacity: .85;
+}
+
+/* === JUDUL === */
+.hero-title {
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #eafff8;
+  text-shadow: 0 0 25px rgba(0,255,200,.25);
+}
+
+/* efek graffiti-ish modern */
+.hero-title span {
+  display: inline-block;
+  background: linear-gradient(90deg, #00ffd5, #4da6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+/* deskripsi */
+.hero p {
+  color: #b5c0c7;
+  max-width: 420px;
+  margin: 16px auto 0;
+  font-size: 15px;
+}
+
+/* garis bawah */
+.hero .line {
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, #00ffd5, #4da6ff);
+  margin: 18px auto;
+  border-radius: 999px;
+}
+    
   </style>
 </head>
 
 <body>
 
 <header>
-  <h1>MY DESIGN PORTOFOLIO</h1>
+  <img src="img/logo.png" alt="Logo" class="corner-logo">
+  <h1 class="hero-title">
+  Design<br><span>Portfolio</span>
+  </h1>
   <p>Koleksi hasil desain dan project visual yang pernah saya kerjakan.</p>
 </header>
 
