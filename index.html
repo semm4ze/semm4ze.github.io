@@ -111,18 +111,31 @@ body {
   );
   opacity: 0;
   transition: opacity 0.4s;
-  pointer-events: none; /* 🔥 INI YANG BIKIN FILTER BISA DIKLIK */
+  pointer-events: none; /* ✅ penting */
+}
+/* === CARD GLOW EFFECT === */
+.card {
+  position: relative;
 }
 
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--x) var(--y),
+    rgba(0,255,204,0.15),
+    transparent 40%
   );
   opacity: 0;
   transition: opacity 0.4s;
+  pointer-events: none; /* ✅ WAJIB */
 }
 
 .card:hover::after {
   opacity: 1;
-}
-
+  }
+    
 /* === IMAGE SMOOTH === */
 .card img {
   transition: transform 0.5s ease;
@@ -702,8 +715,7 @@ header::before {
 </section>
 
 <script>
-<script>
-/* === CEO CURSOR LIGHT EFFECT (SUBTLE) === */
+/* === CARD CURSOR LIGHT === */
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
@@ -712,27 +724,11 @@ document.querySelectorAll('.card').forEach(card => {
   });
 });
 
-/* === LIGHTBOX IMAGE === */
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-
-document.querySelectorAll(".card img").forEach(img => {
-  img.addEventListener("click", e => {
-    e.stopPropagation();
-    lightboxImg.src = img.src;
-    lightbox.classList.add("show");
-  });
-});
-
-lightbox.addEventListener("click", () => {
-  lightbox.classList.remove("show");
-});
-/* === FILTER PROJECT (FINAL) === */
+/* === FILTER PROJECT === */
 document.querySelectorAll(".filter-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".filter-btn")
       .forEach(b => b.classList.remove("active"));
-
     btn.classList.add("active");
 
     const filter = btn.dataset.filter;
@@ -746,9 +742,24 @@ document.querySelectorAll(".filter-btn").forEach(btn => {
     });
   });
 });
+
+/* === LIGHTBOX === */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".card img").forEach(img => {
+  img.onclick = e => {
+    e.stopPropagation();
+    lightboxImg.src = img.src;
+    lightbox.classList.add("show");
+  };
+});
+
+lightbox.onclick = () => {
+  lightbox.classList.remove("show");
+};
+</script>
   
-</script>
-</script>
 <footer class="site-footer">
   <p>© 2024 z`4sTEAM</p>
   <span>Graphic Design • Pixel Art • Streaming Visual</span>
