@@ -575,7 +575,29 @@ header::before {
 .lightbox.show {
   display: flex;
   }
-         
+  .filter {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.15);
+  color: #e7eef5;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.filter-btn.active {
+  background: #00ffd5;
+  color: #081317;
+  border-color: transparent;
+}
+  
   </style>
 </head>
 
@@ -588,10 +610,15 @@ header::before {
   </h1>
   <p>Koleksi hasil desain dan project visual yang pernah saya kerjakan.</p>
 </header>
-
+<div class="filter">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="pixel">Pixel Art</button>
+  <button class="filter-btn" data-filter="poster">Poster</button>
+  <button class="filter-btn" data-filter="logo">Logo</button>
+</div>
 <section class="projects">
 
-  <div class="card">
+  <div class="card" data-cat="pixel poster">
     <img src="img/project1.jpg" alt="Landing Page">
     <div class="card-content">
       <h3>z`4sTEAM — Dark Experimental Logo</h3>
@@ -599,7 +626,7 @@ header::before {
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-cat="pixel poster">
     <img src="img/project2.jpg" alt="Instagram Feed">
     <div class="card-content">
       <h3>z`4sTEAM — Futuristik Logo</h3>
@@ -607,7 +634,7 @@ header::before {
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-cat="pixel poster">
     <img src="img/project3.jpg" alt="Mobile UI">
     <div class="card-content">
       <h3>z`4sTEAM — Monochrome Identity</h3>
@@ -615,7 +642,7 @@ header::before {
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-cat="pixel poster">
     <img src="img/project4.jpg" alt="Poster Digital">
     <div class="card-content">
       <h3>z`4sTEAM — Dark Grunge Style</h3>
@@ -623,7 +650,7 @@ header::before {
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-cat="pixel poster">
     <img src="img/project5.jpg" alt="Poster Digital">
     <div class="card-content">
       <h3>Maw Mochii — Product Poster</h3>
@@ -631,7 +658,7 @@ header::before {
     </div>
   </div>
  
-  <div class="card">
+  <div class="card" data-cat="pixel poster">
     <img src="img/project6.jpg" alt="Landing Page">
     <div class="card-content">
       <h3>Star Merch — Clothing Concept</h3>
@@ -639,15 +666,15 @@ header::before {
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-cat="pixel poster">
     <img src="img/project7.jpg" alt="Landing Page">
     <div class="card-content">
       <h3>z`4sTEAM — Pixel Art Poster</h3>
       <p>Pixel Art • Digital Poster</p>
     </div>
   </div>
-
-  <div class="card">
+  
+  <div class="card" data-cat="pixel poster">
     <img src="img/project8.jpg" alt="Landing Page">
     <div class="card-content">
       <h3>z`4sTEAM — Streaming Live</h3>
@@ -655,7 +682,7 @@ header::before {
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-cat="pixel poster">
     <img src="img/project9.jpg" alt="Landing Page">
     <div class="card-content">
       <h3>z`4sTEAM — Content Creator</h3>
@@ -690,8 +717,27 @@ document.querySelectorAll(".card img").forEach(img => {
 lightbox.addEventListener("click", () => {
   lightbox.classList.remove("show");
 });
-</script>
+/* === FILTER PROJECT === */
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const filter = btn.dataset.filter;
+
+    document.querySelectorAll(".card").forEach(card => {
+      if (filter === "all") {
+        card.style.display = "block";
+      } else {
+        card.style.display = card.dataset.cat.includes(filter)
+          ? "block"
+          : "none";
+      }
+    });
+  });
+});
   
+</script>
 </script>
 <footer class="site-footer">
   <p>© 2024 z`4sTEAM</p>
