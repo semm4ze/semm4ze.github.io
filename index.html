@@ -80,6 +80,87 @@
       color: #666;
       font-size: 13px;
     }
+    /* === SMOOTH GLOBAL === */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+}
+
+/* === CARD UPGRADE === */
+.card {
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--x) var(--y),
+    rgba(0,255,204,0.15),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+/* === IMAGE SMOOTH === */
+.card img {
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.07);
+}
+
+/* === TITLE POLISH === */
+.card h3 {
+  letter-spacing: 0.5px;
+}
+
+/* === HEADER GLOW === */
+header h1 {
+  text-shadow: 0 0 20px rgba(0,255,204,0.35);
+}
+
+/* === BUTTON ENHANCE === */
+.buttons a {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.buttons a:hover {
+  box-shadow: 0 12px 35px rgba(0,255,204,0.45);
+}
+
+/* === MODAL SMOOTH === */
+.modal img {
+  animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* === FOOTER FADE === */
+footer {
+  opacity: 0.8;
+    }
+
   </style>
 </head>
 
