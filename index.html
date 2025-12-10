@@ -160,7 +160,78 @@ header h1 {
 footer {
   opacity: 0.8;
     }
+/* === CEO COLOR SYSTEM === */
+:root {
+  --accent: #00ffcc;
+  --dark: #0b0b0b;
+}
 
+/* === CLEANER LOOK === */
+body {
+  background: linear-gradient(180deg, #0b0b0b, #0f0f0f);
+}
+
+/* === CARD CEO STYLE === */
+.card {
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* === IMAGE CINEMATIC === */
+.card img {
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* === TEXT HIERARCHY === */
+header h1 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+header p {
+  font-size: 15px;
+}
+
+/* === BUTTON CEO === */
+.buttons a {
+  position: relative;
+  overflow: hidden;
+}
+
+.buttons a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+  transform: translateX(-100%);
+}
+
+.buttons a:hover::after {
+  transform: translateX(100%);
+  transition: transform .6s ease;
+}
+
+/* === MODAL DARK === */
+.modal {
+  backdrop-filter: blur(8px);
+}
+
+/* === CEO FOOTER === */
+footer {
+  letter-spacing: .5px;
+      }
+      
   </style>
 </head>
 
@@ -218,6 +289,16 @@ footer {
 <footer>
   © 2024 semm4ze • Portfolio Design — z`4sTEAM
 </footer>
+<script>
+/* === CEO CURSOR LIGHT EFFECT (SUBTLE) === */
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--x', e.clientX - rect.left + 'px');
+    card.style.setProperty('--y', e.clientY - rect.top + 'px');
+  });
+});
+</script>
 
 </body>
 </html>
