@@ -728,19 +728,15 @@ document.querySelectorAll('.card').forEach(card => {
 document.querySelectorAll(".filter-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".filter-btn")
-      .forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+      document.querySelectorAll(".card").forEach(card => {
+  const cat = card.dataset.cat || "";
 
-    const filter = btn.dataset.filter;
-
-    document.querySelectorAll(".card").forEach(card => {
-      const cat = card.dataset.cat || "";
-      card.style.display =
-        filter === "all" || cat.includes(filter)
-          ? "block"
-          : "none";
-    });
-  });
+  if (filter === "all" || cat.includes(filter)) {
+    card.style.display = "block";
+    card.style.animation = "fadeUp 0.5s ease both";
+  } else {
+    card.style.display = "none";
+  }
 });
 
 /* === LIGHTBOX === */
