@@ -597,7 +597,11 @@ header::before {
   color: #081317;
   border-color: transparent;
 }
-  
+  .filter {
+  position: relative;
+  z-index: 20;
+  }
+    
   </style>
 </head>
 
@@ -618,7 +622,7 @@ header::before {
 </div>
 <section class="projects">
 
-  <div class="card" data-cat="pixel poster">
+  <div class="card" data-cat="logo">
     <img src="img/project1.jpg" alt="Landing Page">
     <div class="card-content">
       <h3>z`4sTEAM — Dark Experimental Logo</h3>
@@ -626,7 +630,7 @@ header::before {
     </div>
   </div>
 
-  <div class="card" data-cat="pixel poster">
+  <div class="card" data-cat="logo">
     <img src="img/project2.jpg" alt="Instagram Feed">
     <div class="card-content">
       <h3>z`4sTEAM — Futuristik Logo</h3>
@@ -634,7 +638,7 @@ header::before {
     </div>
   </div>
 
-  <div class="card" data-cat="pixel poster">
+  <div class="card" data-cat="logo">
     <img src="img/project3.jpg" alt="Mobile UI">
     <div class="card-content">
       <h3>z`4sTEAM — Monochrome Identity</h3>
@@ -642,7 +646,7 @@ header::before {
     </div>
   </div>
 
-  <div class="card" data-cat="pixel poster">
+  <div class="card" data-cat="logo">
     <img src="img/project4.jpg" alt="Poster Digital">
     <div class="card-content">
       <h3>z`4sTEAM — Dark Grunge Style</h3>
@@ -717,22 +721,22 @@ document.querySelectorAll(".card img").forEach(img => {
 lightbox.addEventListener("click", () => {
   lightbox.classList.remove("show");
 });
-/* === FILTER PROJECT === */
+/* === FILTER PROJECT (FINAL) === */
 document.querySelectorAll(".filter-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".filter-btn")
+      .forEach(b => b.classList.remove("active"));
+
     btn.classList.add("active");
 
     const filter = btn.dataset.filter;
 
     document.querySelectorAll(".card").forEach(card => {
-      if (filter === "all") {
-        card.style.display = "block";
-      } else {
-        card.style.display = card.dataset.cat.includes(filter)
+      const cat = card.dataset.cat || "";
+      card.style.display =
+        filter === "all" || cat.includes(filter)
           ? "block"
           : "none";
-      }
     });
   });
 });
