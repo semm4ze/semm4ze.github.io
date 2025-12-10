@@ -467,7 +467,80 @@ header p {
     gap: 34px;
   }
    }
-    
+ .card {
+  border-radius: 16px;
+}
+.card img {
+  border-radius: 16px 16px 0 0;
+    }
+.card {
+  box-shadow: 0 8px 25px rgba(0,0,0,.45);
+}
+.card:hover {
+  box-shadow: 0 22px 55px rgba(0,0,0,.85);
+}
+.card-content {
+  padding: 16px 18px 18px;
+}
+  header p {
+  max-width: 460px;
+  }
+ .card img {
+  transition: transform .6s ease, filter .6s ease;
+    }
+  * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+   }
+  .card {
+  animation: fadeUp .6s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+    }
+   .card {
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,.07),
+      rgba(255,255,255,.02)
+    );
+   }
+   header {
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(600px at 50% -20%, rgba(0,255,204,.18), transparent 40%);
+  z-index: -1;
+}
+  .card h3 {
+  line-height: 1.35;
+  }
+ .card:hover {
+  outline: 1px solid rgba(255,255,255,0.12);
+  outline-offset: -1px;
+ }
+  @media (max-width: 480px) {
+  header h1 {
+    letter-spacing: 1px;
+  }
+  .projects {
+    padding: 32px 20px;
+  }
+  }
+  
   </style>
 </head>
 
