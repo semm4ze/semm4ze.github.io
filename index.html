@@ -45,8 +45,10 @@
       padding: 40px;
       max-width: 1100px;
       margin: auto;
-    }
-
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
     .card {
       background: #1a1a1a;
       border-radius: 12px;
@@ -100,20 +102,6 @@ body {
 .card {
   position: relative;
   border: 1px solid rgba(255,255,255,0.08);
-}
-
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    600px circle at var(--x) var(--y),
-    rgba(0,255,204,0.15),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none; /* ✅ penting */
 }
 /* === CARD GLOW EFFECT === */
 .card {
@@ -584,7 +572,7 @@ header::before {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 999;
 }
 
 .lightbox img {
@@ -623,6 +611,11 @@ header::before {
   z-index: 20;
   }
  
+.filter,
+.filter * {
+  pointer-events: auto !important;
+ }
+    
   </style>
 </head>
 
