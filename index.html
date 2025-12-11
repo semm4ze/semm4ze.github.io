@@ -266,20 +266,34 @@ document.querySelectorAll(".card").forEach(card=>{
   });
 });
 
-/* ===== FILTER ===== */
-const btns=document.querySelectorAll(".filter-btn");
-const cards=document.querySelectorAll(".card");
-btns.forEach(btn=>{
-  btn.onclick=()=>{
-    btns.forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    const f=btn.dataset.filter;
-    cards.forEach(c=>{
-      c.style.display=(f==="all"||c.dataset.cat.includes(f))?"block":"none";
+/* === FILTER PROJECT — FIX FINAL === */
+document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        // hilangkan active dari semua tombol
+        document.querySelectorAll(".filter-btn")
+        .forEach(b => b.classList.remove("active"));
+
+        // aktifkan tombol yang diklik
+        btn.classList.add("active");
+
+        const filter = btn.dataset.filter;
+
+        // filter tiap card
+        document.querySelectorAll(".card").forEach(card => {
+            const cat = card.dataset.cat || "";
+
+            if (filter === "all" || cat === filter) {
+                card.style.display = "block";
+                card.style.animation = "fadeUp 0.4s ease both";
+            } else {
+                card.style.display = "none";
+            }
+        });
     });
-  };
 });
 
+  
 /* ===== LIGHTBOX ===== */
 const lb=document.getElementById("lightbox");
 const lbImg=document.getElementById("lightbox-img");
