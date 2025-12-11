@@ -1,652 +1,177 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio | Semm4ze</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>z`4sTEAM — Portfolio v1.4</title>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    * {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    
-    * {
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body {
-      margin: 0;
-      background: #0f0f0f;
-      color: #fff;
-    }
-
-    header {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    header h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      color: #aaa;
-      max-width: 500px;
-      margin: auto;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px;
-      max-width: 1100px;
-      margin: auto;
-  position: relative;
-  z-index: 1;
-  pointer-events: auto;
+<style>
+/* ===== BASE ===== */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,Segoe UI,Roboto,Arial;
+  background:#0b0c10;
+  color:#e6e6e6;
 }
-    .card {
-      background: #1a1a1a;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: 0.3s;
-      position: relative;
-      z-index: 1;
-      }
-      
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    }
+img{width:100%;display:block;border-radius:12px}
 
-    .card img {
-      width: 100%;
-      display: block;
-    }
-
-    .card-content {
-      padding: 15px;
-    }
-
-    .card h3 {
-      margin: 0;
-      font-size: 18px;
-    }
-
-    .card p {
-      margin: 5px 0 0;
-      color: #bbb;
-      font-size: 14px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #666;
-      font-size: 13px;
-    }
-    /* === SMOOTH GLOBAL === */
-html {
-  scroll-behavior: smooth;
+/* ===== NAVBAR ===== */
+.site-nav{
+  position:sticky;
+  top:12px;
+  z-index:100;
+  max-width:1100px;
+  margin:0 auto;
+}
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 18px;
+  border-radius:14px;
+  background:rgba(15,15,18,.75);
+  backdrop-filter:blur(8px);
+  box-shadow:0 8px 22px rgba(0,0,0,.45);
+}
+.nav-logo{font-weight:700}
+.nav-list{
+  list-style:none;
+  display:flex;
+  gap:10px;
+  padding:0;margin:0;
+}
+.nav-link{
+  color:#cfd6db;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:999px;
+}
+.nav-link.active{
+  background:#0fffdc;
+  color:#081317;
 }
 
-body {
-  line-height: 1.6;
+/* ===== SECTION ===== */
+section{
+  max-width:1100px;
+  margin:70px auto;
+  padding:0 16px;
+}
+h2{margin-bottom:20px}
+
+/* ===== FILTER ===== */
+.filter{
+  display:flex;
+  gap:8px;
+  margin-bottom:22px;
+  position:relative;
+  z-index:20;
+}
+.filter-btn{
+  padding:8px 14px;
+  border-radius:999px;
+  background:#121318;
+  border:1px solid rgba(255,255,255,.08);
+  color:#dce3e8;
+  cursor:pointer;
+}
+.filter-btn.active{
+  background:#0fffdc;
+  color:#081317;
 }
 
-/* === CARD UPGRADE === */
-.card {
-  position: relative;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-/* === CARD GLOW EFFECT === */
-.card {
-  position: relative;
+/* ===== GRID & CARD (AMAN) ===== */
+.projects,
+.grid{
+  position:relative;
+  z-index:1;
 }
 
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    600px circle at var(--x) var(--y),
-    rgba(0,255,204,0.15),
+.card{
+  position:relative;
+  background:#121318;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    400px circle at var(--x) var(--y),
+    rgba(0,255,204,.18),
     transparent 40%
   );
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none; /* ✅ WAJIB */
+  opacity:0;
+  transition:.3s;
+  pointer-events:none;
+}
+.card:hover::after{opacity:1}
+
+/* ===== LIGHTBOX ===== */
+#lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:200;
+}
+#lightbox.show{display:flex}
+#lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:14px;
 }
 
-.card:hover::after {
-  opacity: 1;
-  }
-    
-/* === IMAGE SMOOTH === */
-.card img {
-  transition: transform 0.5s ease;
+/* ===== BACK TO TOP ===== */
+#back-to-top{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  background:#0fffdc;
+  color:#081317;
+  display:none;
+  cursor:pointer;
+  z-index:300;
 }
+#back-to-top.show{display:block}
 
-.card:hover img {
-  transform: scale(1.07);
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:30px;
+  font-size:13px;
+  color:#777;
 }
-
-/* === TITLE POLISH === */
-.card h3 {
-  letter-spacing: 0.5px;
-}
-
-/* === HEADER GLOW === */
-header h1 {
-  text-shadow: 0 0 20px rgba(0,255,204,0.35);
-}
-
-/* === BUTTON ENHANCE === */
-.buttons a {
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-}
-
-.buttons a:hover {
-  box-shadow: 0 12px 35px rgba(0,255,204,0.45);
-}
-
-/* === MODAL SMOOTH === */
-.modal img {
-  animation: zoomIn 0.4s ease;
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.85);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* === FOOTER FADE === */
-footer {
-  opacity: 0.8;
-    }
-/* === CEO COLOR SYSTEM === */
-:root {
-  --accent: #00ffcc;
-  --dark: #0b0b0b;
-}
-
-/* === CLEANER LOOK === */
-body {
-  background: linear-gradient(180deg, #0b0b0b, #0f0f0f);
-}
-
-/* === CARD CEO STYLE === */
-.card {
-  transition: transform .35s ease, box-shadow .35s ease;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow:
-    0 15px 40px rgba(0,0,0,0.8),
-    0 0 0 1px rgba(255,255,255,0.06);
-}
-
-/* === IMAGE CINEMATIC === */
-.card img {
-  filter: saturate(1.05) contrast(1.05);
-}
-
-/* === TEXT HIERARCHY === */
-header h1 {
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-header p {
-  font-size: 15px;
-}
-
-/* === BUTTON CEO === */
-.buttons a {
-  position: relative;
-  overflow: hidden;
-}
-
-.buttons a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,.35),
-    transparent
-  );
-  transform: translateX(-100%);
-}
-
-.buttons a:hover::after {
-  transform: translateX(100%);
-  transition: transform .6s ease;
-}
-
-/* === MODAL DARK === */
-.modal {
-  backdrop-filter: blur(8px);
-}
-
-/* === CEO FOOTER === */
-footer {
-  letter-spacing: .5px;
-      }
-  body {
-  background:
-    radial-gradient(1200px at 10% -20%, rgba(0,255,204,0.08), transparent 40%),
-    radial-gradient(900px at 90% 10%, rgba(0,119,255,0.08), transparent 40%),
-    linear-gradient(180deg, #0a0a0a, #0f0f0f);
-  color: #eaeaea;
-    }
-   header h1 {
-  color: #ffffff;
-}
-
-header p {
-  color: #b5b5b5;
-}
-
-.card h3 {
-  color: #f5f5f5;
-}
-
-.card p {
-  color: #a8a8a8;
-      }
-  header h1 {
-  font-size: clamp(36px, 6vw, 48px);
-  letter-spacing: 1.5px;
-  margin-bottom: 12px;
-  position: relative;
-}
-
-header h1::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #00ffcc, #0077ff);
-  margin: 18px auto 0;
-  border-radius: 3px;
-  }
-.card {
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.06),
-    rgba(255,255,255,0.02)
-  );
-  }
- /* === HERO BACKGROUND === */
-.hero {
-  position: relative;
-  padding: 120px 20px 80px;
-  background:
-    radial-gradient(circle at top, rgba(0,255,200,.12), transparent 40%),
-    linear-gradient(180deg, #050505, #0b0b0b);
-  overflow: hidden;
-}
-
-/* overlay noise */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.05;
-  pointer-events: none;
-}
-
-/* === LOGO KANAN ATAS === */
-.corner-logo {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 42px;
-  opacity: .85;
-}
-
-/* === JUDUL === */
-.hero-title {
-  font-size: 42px;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 1px;
-  color: #eafff8;
-  text-shadow: 0 0 25px rgba(0,255,200,.25);
-}
-
-/* efek graffiti-ish modern */
-.hero-title span {
-  display: inline-block;
-  background: linear-gradient(90deg, #00ffd5, #4da6ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'Impact', 'Arial Black', sans-serif;
-}
-
-/* deskripsi */
-.hero p {
-  color: #b5c0c7;
-  max-width: 420px;
-  margin: 16px auto 0;
-  font-size: 15px;
-}
-
-/* garis bawah */
-.hero .line {
-  width: 70px;
-  height: 4px;
-  background: linear-gradient(90deg, #00ffd5, #4da6ff);
-  margin: 18px auto;
-  border-radius: 999px;
-}
-/* === HERO DEWA FINAL === */
-.hero {
-  position: relative;
-  padding: 120px 20px 90px;
-  text-align: center;
-  background:
-    radial-gradient(circle at top, rgba(0,255,200,.15), transparent 40%),
-    linear-gradient(180deg, #050505, #0b0b0b);
-  overflow: hidden;
-}
-
-/* grain overlay */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.06;
-  pointer-events: none;
-}
-
-/* logo pojok kanan */
-.corner-logo {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 42px;
-  opacity: 0.85;
-  filter: drop-shadow(0 0 10px rgba(0,255,200,.3));
-}
-
-/* judul */
-.hero-title {
-  font-size: 46px;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 1px;
-  margin: 0;
-  color: #eafff8;
-  text-shadow: 0 0 30px rgba(0,255,200,.25);
-}
-
-/* graffiti/impact feel */
-.hero-title span {
-  display: inline-block;
-  background: linear-gradient(90deg, #00ffd5, #4da6ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'Impact', 'Arial Black', sans-serif;
-}
-
-/* garis accent */
-.hero .line {
-  width: 80px;
-  height: 4px;
-  margin: 22px auto;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #00ffd5, #4da6ff);
-}
-
-/* deskripsi */
-.hero p {
-  max-width: 420px;
-  margin: 0 auto;
-  font-size: 15px;
-  color: #b5c0c7;
-  line-height: 1.6;
-  }
- .card {
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.card:hover {
-  box-shadow:
-    0 20px 45px rgba(0,0,0,0.8),
-    0 0 0 1px rgba(255,255,255,0.08);
-    }
- .card h3 {
-  font-weight: 600;
-  font-size: 17px;
-}
-
-.card p {
-  font-size: 13px;
-  letter-spacing: .3px;
-  }
- .card img {
-  filter: saturate(1.08) contrast(1.08);
- }
- header {
-  padding-bottom: 90px;
-}
-
-header p {
-  letter-spacing: .4px;
-}
-.card {
-  will-change: transform;
-}
-
-.card:hover {
-  transform: translateY(-12px) scale(1.01);
-}
-.card:hover img {
-  filter: saturate(1.15) contrast(1.1);
-}
-@media (max-width: 600px) {
-  .card:hover {
-    transform: none;
-    box-shadow: none;
-  }
-}
- footer {
-  opacity: 0.75;
-  letter-spacing: .6px;
- }
- @media (min-width: 1200px) {
-  .projects {
-    gap: 34px;
-  }
-   }
- .card {
-  border-radius: 16px;
-}
-.card img {
-  border-radius: 16px 16px 0 0;
-    }
-.card {
-  box-shadow: 0 8px 25px rgba(0,0,0,.45);
-}
-.card:hover {
-  box-shadow: 0 22px 55px rgba(0,0,0,.85);
-}
-.card-content {
-  padding: 16px 18px 18px;
-}
-  header p {
-  max-width: 460px;
-  }
- .card img {
-  transition: transform .6s ease, filter .6s ease;
-    }
-  * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-   }
-  .card {
-  animation: fadeUp .6s ease both;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-    }
-   .card {
-  background:
-    linear-gradient(180deg,
-      rgba(255,255,255,.07),
-      rgba(255,255,255,.02)
-    );
-   }
-   header {
-  position: relative;
-}
-
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(600px at 50% -20%, rgba(0,255,204,.18), transparent 40%);
-  z-index: -1;
-}
-  .card h3 {
-  line-height: 1.35;
-  }
- .card:hover {
-  outline: 1px solid rgba(255,255,255,0.12);
-  outline-offset: -1px;
- }
-  @media (max-width: 480px) {
-  header h1 {
-    letter-spacing: 1px;
-  }
-  .projects {
-    padding: 32px 20px;
-  }
-  }
-  .site-footer {
-  margin-top: 80px;
-  padding: 40px 20px 32px;
-  text-align: center;
-  color: rgba(255,255,255,0.5);
-  font-size: 13px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-.site-footer span {
-  display: block;
-  margin-top: 6px;
-  font-size: 12px;
-  letter-spacing: 0.4px;
-  opacity: 0.7;
-    }
-  .lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-}
-
-.lightbox.show {
-  display: flex;
-  }
-  .filter {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.filter-btn {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.15);
-  color: #e7eef5;
-  padding: 6px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.filter-btn.active {
-  background: #00ffd5;
-  color: #081317;
-  border-color: transparent;
-}
-  .filter {
-  position: relative;
-  z-index: 20;
-  }
- 
-.filter,
-.filter * {
-  pointer-events: auto !important;
- }
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-     }
-  .filter-btn {
-  touch-action: manipulation;
-    }
-                             
-  </style>
+</style>
 </head>
 
 <body>
 
-<header>
-  <img src="img/logo.png" alt="Logo" class="corner-logo">
-  <h1 class="hero-title">
-  Design<br><span>Portfolio</span>
-  </h1>
-  <p>Koleksi hasil desain dan project visual yang pernah saya kerjakan.</p>
-</header>
-<div class="filter">
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="pixel">Pixel Art</button>
-  <button class="filter-btn" data-filter="poster">Poster</button>
-  <button class="filter-btn" data-filter="logo">Logo</button>
-</div>
+<!-- ===== NAV ===== -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">z`4sTEAM</div>
+    <ul class="nav-list">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="home">
+  <h2>Welcome</h2>
+  <p>Design • Pixel Art • Streaming Visual</p>
+</section>
 <section class="projects">
 
   <div class="card" data-cat="logo">
@@ -720,67 +245,56 @@ header::before {
       <p>Pixel Art • Creator Poster</p>
     </div>
   </div>
+  </section>
+      
+<section id="about">
+  <h2>About</h2>
+  <p>z`4sTEAM — Creative & Design Portfolio.</p>
 </section>
 
+<div id="lightbox"><img id="lightbox-img"></div>
+<button id="back-to-top">↑</button>
+<footer>© z`4sTEAM v1.4</footer>
+
 <script>
-/* === CARD CURSOR LIGHT === */
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--x', e.clientX - rect.left + 'px');
-    card.style.setProperty('--y', e.clientY - rect.top + 'px');
+/* ===== GLOW ===== */
+document.querySelectorAll(".card").forEach(card=>{
+  card.addEventListener("mousemove",e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty("--x",(e.clientX-r.left)+"px");
+    card.style.setProperty("--y",(e.clientY-r.top)+"px");
   });
 });
 
-/* === FILTER PROJECT (FIX) === */
-const filterButtons = document.querySelectorAll(".filter-btn");
-const cards = document.querySelectorAll(".card");
-
-filterButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    // active button
-    filterButtons.forEach(b => b.classList.remove("active"));
+/* ===== FILTER ===== */
+const btns=document.querySelectorAll(".filter-btn");
+const cards=document.querySelectorAll(".card");
+btns.forEach(btn=>{
+  btn.onclick=()=>{
+    btns.forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
-
-    const filter = btn.dataset.filter;
-
-    cards.forEach(card => {
-      const cat = card.dataset.cat || "";
-
-      if (filter === "all" || cat.includes(filter)) {
-        card.style.display = "block";
-        card.style.animation = "fadeUp 0.5s ease both";
-      } else {
-        card.style.display = "none";
-      }
+    const f=btn.dataset.filter;
+    cards.forEach(c=>{
+      c.style.display=(f==="all"||c.dataset.cat.includes(f))?"block":"none";
     });
-  });
-});
-
-/* === LIGHTBOX === */
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-
-document.querySelectorAll(".card img").forEach(img => {
-  img.onclick = e => {
-    e.stopPropagation();
-    lightboxImg.src = img.src;
-    lightbox.classList.add("show");
   };
 });
 
-lightbox.onclick = () => {
-  lightbox.classList.remove("show");
-};
+/* ===== LIGHTBOX ===== */
+const lb=document.getElementById("lightbox");
+const lbImg=document.getElementById("lightbox-img");
+document.querySelectorAll(".card img").forEach(img=>{
+  img.onclick=()=>{lbImg.src=img.src;lb.classList.add("show")}
+});
+lb.onclick=()=>lb.classList.remove("show");
+
+/* ===== BACK TO TOP ===== */
+const topBtn=document.getElementById("back-to-top");
+window.addEventListener("scroll",()=>{
+  topBtn.classList.toggle("show",window.scrollY>400);
+});
+topBtn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 </script>
-  
-<footer class="site-footer">
-  <p>© 2024 z`4sTEAM</p>
-  <span>Graphic Design • Pixel Art • Streaming Visual</span>
-</footer>
- <div class="lightbox" id="lightbox">
-  <img id="lightbox-img">
- </div>
-  
+
 </body>
 </html>
